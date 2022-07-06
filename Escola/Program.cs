@@ -10,8 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-//builder.Services.AddDbContext<Escola_Context>(opt => opt.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=escola;User ID=root1;Password=Ab@caxi33"));
-//builder.Services.AddDbContext<Escola_Context>(opt => opt.UseLazyLoadingProxies().UseSqlServer(@"Server = tcp:escolad.database.windows.net, 1433; Initial Catalog = Escola; Persist Security Info=False; User ID = root1; Password = Ab@caxi33; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"));
+
 builder.Services.AddDbContext<Escola_Context>(opt => opt.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
